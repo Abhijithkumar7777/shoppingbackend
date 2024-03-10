@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "68138eeb-1a8a-4b25-b50a-c9449236a4d8",
+		"name": "Shopping",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost/shopping/products.php",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"\",\r\n    \"image\": \"sample.jpg\",\r\n    \"pricing\": 50.78,\r\n    \"shipping_cost\": 3.50\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/products.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"products.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/products.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/shopping/products.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"products.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/products.php",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"3\",\r\n    \"description\": \"School Bag\",\r\n    \"image\": \"bag.jpg\",\r\n    \"pricing\": 34.47,\r\n    \"shipping_cost\": 2.87\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/products.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"products.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/products.php",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"3\",\r\n    \"description\": \"School Bag\",\r\n    \"image\": \"bag.jpg\",\r\n    \"pricing\": 34.47,\r\n    \"shipping_cost\": 2.87\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/products.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"products.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/users.php",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sample1.com\",\r\n    \"password\": \"sample@123\",\r\n    \"username\": \"sample\",\r\n    \"purchase_history\": \"[]\",\r\n    \"shipping_address\": \"Albert Street, Waterloo, Canada\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/users.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"users.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/users.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/shopping/users.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"users.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/users.php?id=2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/users.php?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"users.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/users.php",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"email\": \"don@example.com\",\r\n    \"password\": \"don_password\",\r\n    \"username\": \"don_user\",\r\n    \"purchase_history\": \"[]\",\r\n    \"shipping_address\": \"Don's Address, City, Country\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/users.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"users.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/users.php",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/users.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"users.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/comments.php?product_id=2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/shopping/comments.php?product_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"comments.php"
+					],
+					"query": [
+						{
+							"key": "product_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/comments.php",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"rating\": 4,\r\n    \"image\": \"updated_comment_image.jpg\",\r\n    \"text\": \"I changed my mind, it's good but not great.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/comments.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"comments.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/comments.php",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/comments.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"comments.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/cart.php",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 1,\r\n    \"quantity\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/cart.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"cart.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/cart.php?user_id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/shopping/cart.php?user_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"cart.php"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/cart.php",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 1,\r\n    \"quantity\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/cart.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"cart.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/cart.php",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/cart.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"cart.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/orders.php",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"total_amount\": 100.00,\r\n    \"status\": \"Pending\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/orders.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"orders.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/orders.php?user_id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/shopping/orders.php?user_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"orders.php"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/orders.php",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "order_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "Completed",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/shopping/orders.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"orders.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/shopping/orders.php",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "order_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/shopping/orders.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"orders.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
