@@ -7,12 +7,33 @@
 	"item": [
 		{
 			"name": "http://localhost/shopping/products.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should contain new product details\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"\r",
+							"    pm.expect(responseBody).to.include(\"success\");\r",
+							"    pm.expect(responseBody).to.include(\"Product added\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"description\": \"\",\r\n    \"image\": \"sample.jpg\",\r\n    \"pricing\": 50.78,\r\n    \"shipping_cost\": 3.50\r\n}\r\n",
+					"raw": "{\r\n    \"description\": \"Shirt\",\r\n    \"image\": \"shirt.jpg\",\r\n    \"pricing\": 32.63,\r\n    \"shipping_cost\": 2.30\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -35,6 +56,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/products.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should contain product list\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"    var jsonDataString = responseBody.substring(responseBody.indexOf('['));\r",
+							"\r",
+							"    // Attempting to parse the extracted JSON data\r",
+							"    try {\r",
+							"        var jsonData = JSON.parse(jsonDataString);\r",
+							"        pm.expect(jsonData).to.be.an('array').that.is.not.empty;\r",
+							"    } catch (e) {\r",
+							"        pm.expect.fail(\"JSON parsing failed\");\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -54,6 +102,27 @@
 		},
 		{
 			"name": "http://localhost/shopping/products.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should confirm product update\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"\r",
+							"    pm.expect(responseBody).to.include(\"success\");\r",
+							"    pm.expect(responseBody).to.include(\"Product updated successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -82,6 +151,27 @@
 		},
 		{
 			"name": "http://localhost/shopping/products.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should confirm product deletion\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"\r",
+							"    pm.expect(responseBody).to.include(\"success\");\r",
+							"    pm.expect(responseBody).to.include(\"Product deleted successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -110,12 +200,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/users.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should confirm user addition\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"\r",
+							"    pm.expect(responseBody).to.include(\"success\");\r",
+							"    pm.expect(responseBody).to.include(\"User added successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"sample1.com\",\r\n    \"password\": \"sample@123\",\r\n    \"username\": \"sample\",\r\n    \"purchase_history\": \"[]\",\r\n    \"shipping_address\": \"Albert Street, Waterloo, Canada\"\r\n}\r\n",
+					"raw": "{\r\n    \"email\": \"harrypotter.com\",\r\n    \"password\": \"voldmort@123\",\r\n    \"username\": \"harry\",\r\n    \"purchase_history\": \"[]\",\r\n    \"shipping_address\": \"Hogwarts, California\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -138,6 +249,32 @@
 		},
 		{
 			"name": "http://localhost/shopping/users.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should contain user list\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"    var jsonDataString = responseBody.substring(responseBody.indexOf('['));\r",
+							"\r",
+							"    try {\r",
+							"        var jsonData = JSON.parse(jsonDataString);\r",
+							"        pm.expect(jsonData).to.be.an('array').that.is.not.empty;\r",
+							"    } catch (e) {\r",
+							"        pm.expect.fail(\"JSON parsing failed\");\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -157,6 +294,34 @@
 		},
 		{
 			"name": "http://localhost/shopping/users.php?id=2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should contain users with non-empty IDs\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"    var jsonDataString = responseBody.substring(responseBody.indexOf('['));\r",
+							"\r",
+							"    try {\r",
+							"        var jsonData = JSON.parse(jsonDataString);\r",
+							"        jsonData.forEach(function(user) {\r",
+							"            pm.expect(user.id).to.not.be.empty;\r",
+							"        });\r",
+							"    } catch (e) {\r",
+							"        pm.expect.fail(\"JSON parsing failed\");\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -194,6 +359,27 @@
 		},
 		{
 			"name": "http://localhost/shopping/users.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should confirm user update\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"\r",
+							"    pm.expect(responseBody).to.include(\"success\");\r",
+							"    pm.expect(responseBody).to.include(\"User updated successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -222,6 +408,27 @@
 		},
 		{
 			"name": "http://localhost/shopping/users.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should confirm user deletion\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"\r",
+							"    pm.expect(responseBody).to.include(\"success\");\r",
+							"    pm.expect(responseBody).to.include(\"User deleted successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -249,7 +456,93 @@
 			"response": []
 		},
 		{
+			"name": "http://localhost/shopping/comments.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Comment added successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\": \"1\",\r\n    \"user_id\": \"1\",\r\n    \"rating\": \"5\",\r\n    \"image\": \"image_url_here\",\r\n    \"text\": \"This is a test comment.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/shopping/comments.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"shopping",
+						"comments.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "http://localhost/shopping/comments.php?product_id=2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body should contain comments with non-empty ids\", function () {\r",
+							"    var responseBody = pm.response.text();\r",
+							"    var jsonDataString = responseBody.substring(responseBody.indexOf('['));\r",
+							"\r",
+							"    try {\r",
+							"        var jsonData = JSON.parse(jsonDataString);\r",
+							"        \r",
+							"        pm.expect(jsonData).to.be.an('array').that.is.not.empty;\r",
+							"\r",
+							"        jsonData.forEach(function(comment) {\r",
+							"            pm.expect(comment.id).to.not.be.empty;\r",
+							"        });\r",
+							"    } catch (e) {\r",
+							"        pm.expect.fail(\"JSON parsing failed\");\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -275,6 +568,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/comments.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Comment updated successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -303,6 +623,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/comments.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Comment deleted successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -331,12 +678,39 @@
 		},
 		{
 			"name": "http://localhost/shopping/cart.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Item added to cart successfully..\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 1,\r\n    \"quantity\": 2\r\n}\r\n",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"product_id\": 1,\r\n    \"quantity\": 3\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -359,6 +733,37 @@
 		},
 		{
 			"name": "http://localhost/shopping/cart.php?user_id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response data is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"[\"));\r",
+							"    var responseData = JSON.parse(jsonData);\r",
+							"\r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"\r",
+							"    responseData.forEach(function(item) {\r",
+							"        pm.expect(item.id).to.be.a('string').that.is.not.empty;\r",
+							"    });\r",
+							"\r",
+							"    responseData.forEach(function(item) {\r",
+							"        pm.expect(item.user_id).to.be.a('string').that.is.not.empty;\r",
+							"        pm.expect(item.product_id).to.be.a('string').that.is.not.empty;\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -384,6 +789,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/cart.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Quantity updated successfully..\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -412,6 +844,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/cart.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Item removed from cart successfully..\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -440,12 +899,39 @@
 		},
 		{
 			"name": "http://localhost/shopping/orders.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Order created successfully\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": 1,\r\n    \"total_amount\": 100.00,\r\n    \"status\": \"Pending\"\r\n}\r\n",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"total_amount\": 1320.00,\r\n    \"status\": \"Pending\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -468,6 +954,35 @@
 		},
 		{
 			"name": "http://localhost/shopping/orders.php?user_id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response data is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"[\"));\r",
+							"    var responseData = JSON.parse(jsonData);\r",
+							"\r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"\r",
+							"    responseData.forEach(function(item) {\r",
+							"        pm.expect(item.id).to.be.a('string').that.is.not.empty;\r",
+							"        pm.expect(item.user_id).to.be.a('string').that.is.not.empty;\r",
+							"        pm.expect(item.total_amount).to.be.a('string').that.is.not.empty;\r",
+							"        pm.expect(item.status).to.be.a('string').that.is.not.empty;\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -493,6 +1008,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/orders.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Order status successfully updated\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -527,6 +1069,33 @@
 		},
 		{
 			"name": "http://localhost/shopping/orders.php",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Connection established\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Connection successfully established!\");\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response status is success\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.status).to.equal(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response message is as expected\", function () {\r",
+							"    var jsonData = pm.response.text().substring(pm.response.text().indexOf(\"{\"));\r",
+							"    var responseJson = JSON.parse(jsonData);\r",
+							"    pm.expect(responseJson.message).to.equal(\"Order successfully deleted\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [],
